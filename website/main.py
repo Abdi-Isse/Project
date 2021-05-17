@@ -8,10 +8,11 @@ import os
 
 main = Blueprint('main', __name__)
 
-
-# Creates a hex name for the picture given in the form
-# Saves the new image in the profiles folder
 def save_picture(form_picture):
+    """
+    Creates a hex name for the picture given in the form
+    Saves the new image in the profiles folder
+    """
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
@@ -20,15 +21,20 @@ def save_picture(form_picture):
     form_picture.save(picture_path)
     return picture_fn
 
-
 @main.route('/')
 @main.route('/home')
 def home():
+    """
+    Routes to the landing page
+    """
     return render_template('landing.html')
 
 
 @main.route('/courses')
 def courses():
+    """
+    Routes to the courses/readmore page
+    """
     return render_template('courses.html')
 
 
@@ -41,6 +47,10 @@ def muscle():
 @main.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
+    """
+    Routes to the user profile page. User can update their account details.
+    User can also track their progress
+    """
     form = forms.UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -64,12 +74,18 @@ def profile():
 @main.route('/quiz')
 @login_required
 def quiz():
+    """
+    Routes to the quiz page
+    """
     return render_template('quiz.html')
 
 
 @main.route('/result')
 @login_required
 def end():
+    """
+    Routes to the results for the quiz
+    """
     return render_template('result.html')
 
 

@@ -8,10 +8,16 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login')
 def login():
+    """
+    Routes to the login page
+    """
     return render_template('login.html')
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login_post():
+    """
+    Checks user's credentials and logs them in
+    """
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
@@ -28,6 +34,9 @@ def login_post():
 
 @auth.route('/signup', methods=['POST'])
 def signup_post():
+    """
+    Signs up the user and saved their details into the database.
+    """
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
@@ -48,5 +57,8 @@ def signup_post():
 @auth.route('/logout')
 @login_required
 def logout():
+    """
+    Logouts out the user
+    """
     logout_user()
     return redirect(url_for('main.home'))
