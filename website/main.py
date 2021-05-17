@@ -31,10 +31,12 @@ def home():
 def courses():
     return render_template('courses.html')
 
+
 @main.route("/muscle")
 @login_required
 def muscle():
-    return render_template('muscle.html')    
+    return render_template('muscle.html')
+
 
 @main.route('/profile', methods=['GET', 'POST'])
 @login_required
@@ -77,6 +79,7 @@ def questions():
     response = json_questions.question_bank()
     return jsonify(response)
 
+
 @main.route('/score', methods=['POST'])
 @login_required
 def score():
@@ -90,7 +93,8 @@ def score():
             # Getting cursor
             c = conn.cursor()
             # Adding data
-            c.execute('INSERT INTO Score (name, score) VALUES (?, ?)', [name, score])
+            c.execute(
+                'INSERT INTO Score (name, score) VALUES (?, ?)', [name, score])
             # Applying changes
             conn.commit()
         except:
@@ -100,26 +104,15 @@ def score():
         print(f"[{result}]")
     return 'OK'
 
+
 @main.route('/quiz-history', methods=['GET'])
 @login_required
 def marks():
     name = current_user.name
     conn = sqlite3.connect('db.sqlite3')
     c = conn.cursor()
-    c.execute('SELECT name AS student_name, COUNT(*) AS sumbissions, AVG(score) FROM score WHERE name = ? GROUP BY name', [name])
-    marks = [dict(name=row[0], submissions=row[1], average=row[2]) for row in c.fetchall()]
+    c.execute(
+        'SELECT name AS student_name, COUNT(*) AS sumbissions, AVG(score) FROM score WHERE name = ? GROUP BY name', [name])
+    marks = [dict(name=row[0], submissions=row[1], average=row[2])
+             for row in c.fetchall()]
     return jsonify(marks[0])
-
-# Test result
-@main.route('/test-score', methods=['POST'])
-def test():
-    name = "Abdi"
-    print(name)
-    quiz_score = request.get_json(force=True)
-    if len(quiz_score) >= 1:
-        new_score = models.Score(name=name, score=quiz_score)
-        print(new_score)
-        #db.session.add(new_score)
-        #db.session.commit()
-
-    return 'ok'

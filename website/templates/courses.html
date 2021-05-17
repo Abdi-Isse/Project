@@ -21,10 +21,19 @@
                     <span class="highlights"><i class="fas fa-dumbbell"></i> Gym</span>Pal
                 </h1>
                 <nav>
+                    {% if current_user.is_authenticated %}
                     <ul>
-                        <li><a href="{{ url_for('main.home') }}">Home</a></li>
-                        <li><a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a></li>
+                        <li><a href="{{ url_for('main.home') }}" class="navbar-item">Home</a></li>
+                        <li><a href="{{ url_for('main.profile') }}" class="navbar-item">Profile</a></li>
+                        <li><a href="{{ url_for('main.quiz') }}" class="navbar-item">Quiz</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a></li>
                     </ul>
+                    {% else %}
+                        <ul>
+                            <li><a href="{{ url_for('main.home') }}" class="navbar-item">Home</a></li>
+                            <li><a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a></li>
+                        </ul>
+                    {% endif %}
                 </nav>
             </div>
         </div>
@@ -94,7 +103,11 @@
         </div>
         <ul class="description-btns">
             <li><a href="#hero" class="btn btn-outline back-btn">Go Back</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="" class="btn btn-outline">Enroll</a></li>
+            {% else %}
             <li><a href="{{ url_for('main.home') }}" class="btn btn-outline">Sign Up</a></li>
+            {% endif %}
         </ul>
     </section>  
     <section id="more-strength" class="more-description">
@@ -137,7 +150,11 @@
         </div>
         <ul class="description-btns">
             <li><a href="#hero" class="btn btn-outline back-btn">Go Back</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="" class="btn btn-outline">Enroll</a></li>
+             {% else %}
             <li><a href="{{ url_for('main.home') }}" class="btn btn-outline">Sign Up</a></li>
+            {% endif %}
         </ul>
     </section>  
     <section id="more-weight" class="more-description">
@@ -180,7 +197,11 @@
         </div>
         <ul class="description-btns">
             <li><a href="#hero" class="btn btn-outline back-btn">Go Back</a></li>
-            <li><a href="{{ url_for('main.home') }}" class="btn btn-outline">Sign Up</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="" class="btn btn-outline">Enroll</a></li>
+            {% else %}
+                <li><a href="{{ url_for('main.home') }}" class="btn btn-outline">Sign Up</a></li>
+            {% endif %}
         </ul>
     </section>  
     <script src="{{ url_for('static', filename='javascript/readmore.js') }}"></script>  
