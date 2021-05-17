@@ -164,6 +164,14 @@ All ```HTML``` files will live inside of the ```Templates folder```, all images,
 
 [Flask Documentation](https://flask.palletsprojects.com/)
 
+### Database Structure
+![Image of Database Entity-Relation Diagram](https://i.imgur.com/HP6TeDm.png)<br />
+Pictured is the database schema for our web-app in ```models.py``` <br />
+<br />
+```User``` table - Stores the data for user information.<br />
+```Score``` table - Stores user score information <br />
+
+
 ### Other
 
 Feel free to update this doc if you think its missing stuff!
