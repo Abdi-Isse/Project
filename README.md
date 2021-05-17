@@ -19,31 +19,6 @@
 ### Project Overview
 The goal of this project is to develop a web-based platform, where users can learn about nutrition and physical exercises for different types of fitness goals. Users can then take short quizes/assessments on what they learn and also track & save any progress they make over time.
 
-The material on the page needs to be:
-* Informative
-* Reliable 
-* Intuitive
-* Engaging
-
-Some of the functionalities we will require are:
-* Users should be able to view the material, save progress, complete assessments & see the results of the completed assessments along with some feedback
-* Users should also be able to view aggregate assessment results and usage statistics
-
-Additionally the website requires at least six pages/sections - as outlined by project spec sheet:
-* One promoting the theme and purpose to users
-* A registration/login page for new or returning users
-* One or ore pages presenting content to users
-* One or more pages for users to complete assessments
-* One page giving feedback to users
-* One page showing aggregate results & usage statistics
-
-#### Features
-* Login Page - Remember credentials for future autologin, Forgot password, need an account?
-* User Registration page - Ask if they already have an account
-* User not loged in can only have access to the home page. To access other pages they need to be loged in.
-* If user is not logged in and tries to access a restricted page, remember that page, redirect the user to the login page, after successfull login, redirect the user to the page they wanted to access.
-* ... To be added...
-
 ## Development Environment
 
 ### git setup
