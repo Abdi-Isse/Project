@@ -153,6 +153,12 @@ If you are running the web app with: ```app.run()```, then anytime you make chan
 
 Just dont forget to change it back to ```app.run()``` before you put up a pull request.
 
+To run the unit tests run the ```run-test.sh``` script from the root directory like this:
+
+```shell
+./scripts/run-test.sh
+```
+
 ### Folder structure
 
 Our folder structure will closely follow the specifications outlined in the flask [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/tutorial/layout/). There is also more information available in Flasks [Quickstart](https://flask.palletsprojects.com/en/1.1.x/quickstart/) docs.
